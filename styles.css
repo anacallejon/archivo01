@@ -148,6 +148,11 @@ body {
   cursor: not-allowed;
 }
 
+#fullscreenBtn {
+  font-size: 18px;
+  padding: 8px 14px;
+}
+
 #pageIndicator {
   font-size: 14px;
   color: var(--text-muted);

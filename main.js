@@ -176,6 +176,7 @@ const modalSecondary = document.getElementById("modalSecondary");
 const modalPrev = document.getElementById("modalPrev");
 const modalNext = document.getElementById("modalNext");
 const modalDownload = document.getElementById("modalDownload");
+const fullscreenBtn = document.getElementById("fullscreenBtn");
 
 let currentModalIndex = 0;
 
@@ -602,3 +603,27 @@ if (!stateLoaded) {
 
 // Guardar estado antes de que la página se cierre
 window.addEventListener("beforeunload", saveState);
+
+// ====== PANTALLA COMPLETA ======
+fullscreenBtn.addEventListener("click", () => {
+  if (!document.fullscreenElement) {
+    // Entrar en pantalla completa
+    document.documentElement.requestFullscreen().catch((err) => {
+      console.error("Error al intentar entrar en pantalla completa:", err);
+    });
+  } else {
+    // Salir de pantalla completa
+    document.exitFullscreen();
+  }
+});
+
+// Actualizar el icono del botón según el estado
+document.addEventListener("fullscreenchange", () => {
+  if (document.fullscreenElement) {
+    fullscreenBtn.textContent = "⛶"; // Icono cuando está en pantalla completa
+    fullscreenBtn.title = "Salir de pantalla completa";
+  } else {
+    fullscreenBtn.textContent = "⛶";
+    fullscreenBtn.title = "Pantalla completa";
+  }
+});
