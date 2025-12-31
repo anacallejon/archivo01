@@ -3,8 +3,8 @@
 const photos = [
   {
     src: "img/1.jpeg",
-    caption: "Marina\nAgosto 1961",
-    secondary: "Marina, mujer, retrato, bebé, 1961",
+    caption: "Marina\nAgosto 1964",
+    secondary: "Marina, mujer, retrato, bebé, 1964",
   },
   {
     src: "img/2.jpeg",
@@ -67,47 +67,48 @@ const photos = [
   },
   {
     src: "img/13.jpeg",
-    caption: "Marina y Fernando con amigos\n(Fecha)",
+    caption: "Marina y Fernando con amigos, Piedralaves\n5/6/1958",
     secondary: "mamá, papá, amigos, grupo, abuelos, campo, picnic",
   },
   {
     src: "img/14.jpeg",
-    caption: "Marina y Fernando con amigos\n(Fecha)",
+    caption: "Marina y Fernando con amigos, Piedralaves\n5/6/1958",
     secondary: "Mamá, papá, amigos, grupo, abuelos, campo, picnic",
   },
   {
     src: "img/15.jpeg",
-    caption: "Fernando\n(Fecha)",
+    caption: "Fernando\n20/12/1959",
     secondary: "Fernando, abuelo, papá, libro",
   },
   {
     src: "img/16.jpeg",
-    caption: "Marina con amigas\n(Fecha)",
+    caption:
+      "Marina con amigas, Alto de los Leones de Castilla\n27 de Mayo 1956",
     secondary: "Marina, abuela, mamá, campo, amigas",
   },
   {
     src: "img/17.jpeg",
-    caption: "Fernando\n(Fecha)",
+    caption: "Fernando, Almería\n29/3/1959",
     secondary: "Fernando, abuelo, papá, perro",
   },
   {
     src: "img/18.jpeg",
-    caption: "Marina\n(Fecha)",
+    caption: "Marina\n17/8/1959",
     secondary: "Marina, abuela, mamá, amigas",
   },
   {
     src: "img/19.jpeg",
-    caption: "x\n(Fecha)",
+    caption: "x\n14/8/1959",
     secondary: "x",
   },
   {
     src: "img/20.jpeg",
-    caption: "Marina\n(Fecha)",
+    caption: "Marina\n16/8/1959",
     secondary: "Marina, abuela, mamá",
   },
   {
     src: "img/21.jpeg",
-    caption: "Marina\n(Fecha)",
+    caption: "Marina\n16/8/1959",
     secondary: "Marina, abuela, mamá",
   },
   {
@@ -117,13 +118,156 @@ const photos = [
   },
   {
     src: "img/23.jpeg",
-    caption: "Marina\n(Fecha)",
+    caption: "Marina\n13 Abril 1960",
     secondary: "Marina, abuela, mamá, retrato",
   },
   {
     src: "img/24.jpeg",
-    caption: "Marina\n(Fecha)",
+    caption: "Teresa, Casa de Campo\n24/7/1960",
     secondary: "Marina, abuela, mamá, retrato",
+  },
+  {
+    src: "img/25.jpeg",
+    caption: "Teresa con amigas, Casa de Campo\n24/7/1960",
+    secondary: "Marina, abuela, mamá, retrato",
+  },
+  {
+    src: "img/26.jpeg",
+    caption: "Teresa con amigas, Casa de Campo\n24/7/1960",
+    secondary: "Marina, abuela, mamá, retrato",
+  },
+  {
+    src: "img/27.jpeg",
+    caption: "Teresa con amigas, Casa de Campo\n24/7/1960",
+    secondary: "Marina, abuela, mamá, retrato",
+  },
+  {
+    src: "img/28.jpeg",
+    caption: "Teresa con amigas, Casa de Campo\n24/7/1960",
+    secondary: "Marina, abuela, mamá, retrato",
+  },
+  {
+    src: "img/29.jpeg",
+    caption: "Marina\nAgosto 1961",
+    secondary: "Marina, abuela, mamá, retrato",
+  },
+  {
+    src: "img/30.jpeg",
+    caption: "Fernando\nAgosto 1961",
+    secondary: "Fernando, abuelo, papá, retrato",
+  },
+  {
+    src: "img/31.jpeg",
+    caption:
+      "Fernando con amigos, Club Náutico, Zamora\nAgosto Septiembre 1962",
+    secondary: "Fernando, abuelo, papá, retrato",
+  },
+  {
+    src: "img/32.jpeg",
+    caption:
+      "Fernando con amigos, Campo de tenis, futbol y pesca, Club Náutico Zamora\nSeptiembre 1962",
+    secondary: "Fernando, abuelo, papá, retrato",
+  },
+  {
+    src: "img/33.jpeg",
+    caption: "Marina y Fernando\nSeptiembre 1962",
+    secondary: "Fernando, abuelo, papá, retrato",
+  },
+  {
+    src: "img/34.jpeg",
+    caption: "Marina y Fernando\n1/1/1962",
+    secondary: "Fernando, abuelo, papá, retrato",
+  },
+  {
+    src: "img/35.jpeg",
+    caption: "Fernando\nAgosto 1962",
+    secondary: "Fernando, abuelo, papá, retrato",
+  },
+  {
+    src: "img/36.jpeg",
+    caption: "Marina\nAgosto 1962",
+    secondary: "Fernando, abuelo, papá, retrato",
+  },
+  {
+    src: "img/37.jpeg",
+    caption: "Fernando y Marina\n15/5/1963",
+    secondary: "Fernando, abuelo, papá, retrato",
+  },
+  {
+    src: "img/38.jpeg",
+    caption: "Fernando y Marina\n15/5/1963",
+    secondary: "Fernando, abuelo, papá, retrato",
+  },
+  {
+    src: "img/300.jpeg",
+    caption: "DUPLICADA\nJunio 1956",
+    secondary: "Fernando, abuelo, papá, campo, caza",
+  },
+  {
+    src: "img/301.jpeg",
+    caption: "DUPLICADA\nJunio 1956",
+    secondary: "Fernando, abuelo, papá, campo, caza",
+  },
+  {
+    src: "img/301.jpeg",
+    caption: "DUPLICADA\n27 Mayo 1956",
+    secondary: "Fernando, abuelo, papá, campo, caza",
+  },
+  {
+    src: "img/303.jpeg",
+    caption: "Marina y amigas\nJulio 1956",
+    secondary: "Marina, abuela, mamá, campo, amigas",
+  },
+  {
+    src: "img/304.jpeg",
+    caption: "Marina y amigas\nAlto de los Leones de Castilla\n27 Mayo 1956",
+    secondary: "Marina, abuela, mamá, campo, amigas",
+  },
+  {
+    src: "img/305.jpeg",
+    caption: "Marina y amigas\nJunio 1956",
+    secondary: "Marina, abuela, mamá, campo, amigas",
+  },
+  {
+    src: "img/307.jpeg",
+    caption: "Marina y amigas, Piedralaves\n5/6/1958",
+    secondary: "Fernando, abuelo, papá, campo, caza",
+  },
+  {
+    src: "img/308.jpeg",
+    caption: "Marina y amigas, Piedralaves\n5/6/1958",
+    secondary: "Fernando, abuelo, papá, campo, caza",
+  },
+  {
+    src: "img/309.jpeg",
+    caption: "Marina y amigas, Piedralaves\n5/6/1958",
+    secondary: "Fernando, abuelo, papá, campo, caza",
+  },
+  {
+    src: "img/323.jpeg",
+    caption: "Fernando\n1957",
+    secondary: "Fernando, abuelo, papá, campo, caza",
+  },
+  {
+    src: "img/324.jpeg",
+    caption: "DUPLICADA\nJunio 1956",
+    secondary: "Fernando, abuelo, papá, campo, caza",
+  },
+
+  {
+    src: "img/343.jpeg",
+    caption: "Fernando, Cortijo\n30 Mayo 1955",
+    secondary: "Fernando, abuelo, papá, campo, caza",
+  },
+  {
+    src: "img/370.jpeg",
+    caption: "Fernando\nAgosto 1955",
+    secondary: "Fernando, abuelo, papá, retrato",
+  },
+  {
+    src: "img/371.jpeg",
+    caption: "Fernando, Las Dalias\nAgosto 1955",
+    secondary: "Fernando, abuelo, papá, retrato",
   },
   // Añade aquí tus fotos personalizadas con datos reales
   // Ejemplo de las primeras fotos para que puedas reemplazarlas:
