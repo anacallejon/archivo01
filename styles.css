@@ -435,6 +435,36 @@ body {
 }
 
 /* ===== RESPONSIVE ===== */
+@media (max-width: 1024px) and (min-width: 721px) {
+  .topbar {
+    padding: 14px var(--page-padding);
+  }
+
+  .topbar h1 {
+    font-size: 20px;
+  }
+
+  .controls {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  #searchInput {
+    min-width: 200px;
+    font-size: 13px;
+  }
+
+  .grid.is-photos {
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 12px;
+  }
+
+  .page {
+    padding: 0 var(--page-padding) var(--page-padding);
+  }
+}
+
 @media (max-width: 720px) {
   .app {
     display: flex;
