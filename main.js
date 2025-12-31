@@ -36,7 +36,6 @@ const photos = [
     caption: "Marina\n(Fecha)",
     secondary: "abuela Marina, abuelo Marcial, bebé",
   },
-
   {
     src: "img/8.jpeg",
     caption: "Marina\n(Fecha)",
@@ -47,19 +46,16 @@ const photos = [
     caption: "Marina hija\n(Fecha)",
     secondary: "Hermana Marina, bebé, sentada",
   },
-
   {
     src: "img/10.jpeg",
     caption: "Marina\n(Fecha)",
     secondary: "Hermana Marina, bebé, perro",
   },
-
   {
     src: "img/11.jpeg",
     caption: "Marina\n(Fecha)",
     secondary: "Marina, abuela, mamá",
   },
-
   {
     src: "img/12.jpeg",
     caption: "Marina\n(Fecha)",
@@ -199,6 +195,21 @@ const photos = [
     secondary: "Fernando, abuelo, papá, retrato",
   },
   {
+    src: "img/40.jpeg",
+    caption: "Fernando, Zamora\n3 Mayo 1964",
+    secondary: "Fernando, abuelo, papá, moto",
+  },
+  {
+    src: "img/41.jpeg",
+    caption: "Fernando\nMayo 1964",
+    secondary: "Fernando, abuelo, papá, retrato",
+  },
+  {
+    src: "img/42.jpeg",
+    caption: "Fernando hijo\n24/4/1964",
+    secondary: "Fernando, hermano, jr, bebé",
+  },
+  {
     src: "img/300.jpeg",
     caption: "DUPLICADA\nJunio 1956",
     secondary: "Fernando, abuelo, papá, campo, caza",
@@ -209,7 +220,7 @@ const photos = [
     secondary: "Fernando, abuelo, papá, campo, caza",
   },
   {
-    src: "img/301.jpeg",
+    src: "img/302.jpeg",
     caption: "DUPLICADA\n27 Mayo 1956",
     secondary: "Fernando, abuelo, papá, campo, caza",
   },
@@ -253,7 +264,6 @@ const photos = [
     caption: "DUPLICADA\nJunio 1956",
     secondary: "Fernando, abuelo, papá, campo, caza",
   },
-
   {
     src: "img/343.jpeg",
     caption: "Fernando, Cortijo\n30 Mayo 1955",
@@ -269,8 +279,6 @@ const photos = [
     caption: "Fernando, Las Dalias\nAgosto 1955",
     secondary: "Fernando, abuelo, papá, retrato",
   },
-  // Añade aquí tus fotos personalizadas con datos reales
-  // Ejemplo de las primeras fotos para que puedas reemplazarlas:
 ];
 
 // Genera automáticamente el resto de fotos hasta llegar a 550
@@ -339,10 +347,8 @@ function handleSwipe(isModal = false) {
   const diffX = touchEndX - touchStartX;
   const diffY = touchEndY - touchStartY;
 
-  // Solo procesar si el movimiento horizontal es mayor que el vertical
   if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > minSwipeDistance) {
     if (diffX > 0) {
-      // Swipe derecha -> anterior
       if (isModal) {
         if (currentModalIndex > 0) openModal(currentModalIndex - 1);
       } else {
@@ -353,7 +359,6 @@ function handleSwipe(isModal = false) {
         }
       }
     } else {
-      // Swipe izquierda -> siguiente
       if (isModal) {
         if (currentModalIndex < photos.length - 1)
           openModal(currentModalIndex + 1);
@@ -368,7 +373,6 @@ function handleSwipe(isModal = false) {
   }
 }
 
-// Swipe en el grid principal
 grid.addEventListener(
   "touchstart",
   (e) => {
@@ -388,7 +392,6 @@ grid.addEventListener(
   { passive: true }
 );
 
-// Swipe en el modal
 modal.addEventListener(
   "touchstart",
   (e) => {
@@ -436,7 +439,6 @@ function loadState() {
       performSearch(state.searchQuery, false);
     }
 
-    // Restaurar scroll después de un breve delay para asegurar que el contenido está renderizado
     if (state.scrollX !== undefined || state.scrollY !== undefined) {
       setTimeout(() => {
         window.scrollTo(state.scrollX || 0, state.scrollY || 0);
@@ -450,7 +452,6 @@ function loadState() {
   }
 }
 
-// Guardar estado cuando cambia
 function trackStateChange() {
   saveState();
 }
@@ -500,8 +501,11 @@ function performSearch(query, shouldSaveState = true) {
   } else {
     filteredPhotos = photos.filter((photo, idx) => {
       const keywords = normalizeText(photo.secondary || "");
+      const caption = normalizeText(photo.caption || "");
       const photoNum = (idx + 1).toString();
-      return keywords.includes(q) || photoNum.includes(q);
+      return (
+        keywords.includes(q) || caption.includes(q) || photoNum.includes(q)
+      );
     });
   }
 
@@ -566,7 +570,7 @@ function renderPhotoPage(photoPageIndex) {
     return;
   }
 
-  pagePhotos.forEach((photo, i) => {
+  pagePhotos.forEach((photo) => {
     const globalIndex = photos.indexOf(photo);
 
     const tile = document.createElement("button");
@@ -639,10 +643,7 @@ lastBtn.addEventListener("click", () => {
 
 // ====== NAVEGACIÓN CON TECLADO (FUERA DEL MODAL) ======
 document.addEventListener("keydown", (e) => {
-  // Si el modal está abierto, no navegamos páginas
   if (modal.classList.contains("is-open")) return;
-
-  // Si estamos escribiendo en el input de búsqueda, no navegamos
   if (document.activeElement === searchInput) return;
 
   if (e.key === "ArrowLeft" && currentPage > 0) {
@@ -722,7 +723,6 @@ modalNext.addEventListener("click", () => {
   if (currentModalIndex < photos.length - 1) openModal(currentModalIndex + 1);
 });
 
-// Descargar imagen actual
 modalDownload.addEventListener("click", () => {
   const item = photos[currentModalIndex];
   if (!item || !item.src) return;
@@ -762,7 +762,6 @@ if (!stateLoaded) {
   renderPage();
 }
 
-// Guardar estado antes de que la página se cierre
 window.addEventListener("beforeunload", saveState);
 
 // ====== PANTALLA COMPLETA ======
@@ -779,7 +778,6 @@ function toggleFullscreen() {
 fullscreenBtn.addEventListener("click", toggleFullscreen);
 fullscreenBtnMobile.addEventListener("click", toggleFullscreen);
 
-// Actualizar el icono del botón según el estado
 document.addEventListener("fullscreenchange", () => {
   const isFullscreen = !!document.fullscreenElement;
   const title = isFullscreen

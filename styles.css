@@ -128,25 +128,6 @@ body {
 
 .fullscreen-btn-mobile {
   display: none;
-  position: absolute;
-  right: 40px;
-  width: 32px;
-  height: 32px;
-  border: 1px solid var(--border);
-  background: transparent;
-  color: var(--text-main);
-  cursor: pointer;
-  align-items: center;
-  justify-content: center;
-  font-size: 16px;
-  border-radius: 50%;
-  transition: all 0.2s ease;
-  font-family: var(--font-sukhumvit);
-}
-
-.fullscreen-btn-mobile:hover {
-  background: rgba(255, 255, 255, 0.05);
-  border-color: rgba(255, 255, 255, 0.15);
 }
 
 .fullscreen-btn-desktop {
@@ -163,7 +144,7 @@ body {
   cursor: pointer;
   font-family: inherit;
   transition: all 0.2s ease;
-  display: flex;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
 }
@@ -182,16 +163,11 @@ body {
   width: 16px;
   height: 16px;
   display: block;
-  opacity: 0.9;
+  pointer-events: none;
 }
 
 .controls button:disabled .nav-icon {
-  opacity: 0.4;
-}
-
-#firstBtn,
-#lastBtn {
-  font-size: 16px;
+  opacity: 0.5;
 }
 
 #fullscreenBtn {
@@ -535,7 +511,7 @@ body {
   .controls {
     width: 100%;
     flex-direction: column;
-    align-items: center;
+    align-items: stretch;
     gap: 14px;
   }
 
@@ -543,17 +519,36 @@ body {
     width: 100%;
     max-width: none;
     padding: 0 20px;
+    display: flex;
+    gap: 8px;
   }
 
   #searchInput {
-    width: 100%;
+    flex: 1;
     min-width: 0;
     font-size: 13px;
-    padding: 10px 80px 10px 16px;
+    padding: 10px 36px 10px 16px;
   }
 
   .fullscreen-btn-mobile {
-    display: flex;
+    display: inline-flex;
+    flex: 0 0 auto;
+    border: 1px solid var(--border);
+    background: transparent;
+    color: var(--text-main);
+    padding: 10px 14px;
+    border-radius: 999px;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    transition: all 0.2s ease;
+    font-family: var(--font-sukhumvit);
+  }
+
+  .fullscreen-btn-mobile:hover {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.15);
   }
 
   .fullscreen-btn-desktop {
