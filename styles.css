@@ -163,6 +163,9 @@ body {
   cursor: pointer;
   font-family: inherit;
   transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .controls button:hover:not(:disabled) {
@@ -173,6 +176,17 @@ body {
 .controls button:disabled {
   opacity: 0.4;
   cursor: not-allowed;
+}
+
+.nav-icon {
+  width: 16px;
+  height: 16px;
+  display: block;
+  opacity: 0.9;
+}
+
+.controls button:disabled .nav-icon {
+  opacity: 0.4;
 }
 
 #firstBtn,
