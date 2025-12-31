@@ -177,6 +177,9 @@ const modalPrev = document.getElementById("modalPrev");
 const modalNext = document.getElementById("modalNext");
 const modalDownload = document.getElementById("modalDownload");
 const fullscreenBtn = document.getElementById("fullscreenBtn");
+const fullscreenBtnMobile = document.getElementById("fullscreenBtnMobile");
+const firstBtn = document.getElementById("firstBtn");
+const lastBtn = document.getElementById("lastBtn");
 
 let currentModalIndex = 0;
 
@@ -462,6 +465,8 @@ function renderPage() {
 
   prevBtn.disabled = currentPage === 0;
   nextBtn.disabled = currentPage >= tp - 1;
+  firstBtn.disabled = currentPage === 0;
+  lastBtn.disabled = currentPage >= tp - 1;
 }
 
 prevBtn.addEventListener("click", () => {
@@ -472,6 +477,18 @@ prevBtn.addEventListener("click", () => {
 
 nextBtn.addEventListener("click", () => {
   currentPage = clamp(currentPage + 1, 0, totalPages() - 1);
+  renderPage();
+  trackStateChange();
+});
+
+firstBtn.addEventListener("click", () => {
+  currentPage = 0;
+  renderPage();
+  trackStateChange();
+});
+
+lastBtn.addEventListener("click", () => {
+  currentPage = totalPages() - 1;
   renderPage();
   trackStateChange();
 });
@@ -605,25 +622,26 @@ if (!stateLoaded) {
 window.addEventListener("beforeunload", saveState);
 
 // ====== PANTALLA COMPLETA ======
-fullscreenBtn.addEventListener("click", () => {
+function toggleFullscreen() {
   if (!document.fullscreenElement) {
-    // Entrar en pantalla completa
     document.documentElement.requestFullscreen().catch((err) => {
       console.error("Error al intentar entrar en pantalla completa:", err);
     });
   } else {
-    // Salir de pantalla completa
     document.exitFullscreen();
   }
-});
+}
+
+fullscreenBtn.addEventListener("click", toggleFullscreen);
+fullscreenBtnMobile.addEventListener("click", toggleFullscreen);
 
 // Actualizar el icono del botón según el estado
 document.addEventListener("fullscreenchange", () => {
-  if (document.fullscreenElement) {
-    fullscreenBtn.textContent = "⛶"; // Icono cuando está en pantalla completa
-    fullscreenBtn.title = "Salir de pantalla completa";
-  } else {
-    fullscreenBtn.textContent = "⛶";
-    fullscreenBtn.title = "Pantalla completa";
-  }
+  const isFullscreen = !!document.fullscreenElement;
+  const title = isFullscreen
+    ? "Salir de pantalla completa"
+    : "Pantalla completa";
+
+  fullscreenBtn.title = title;
+  fullscreenBtnMobile.title = title;
 });
