@@ -228,21 +228,21 @@ body {
 
 /* ===== PÁGINAS DE TEXTO ===== */
 .intro {
-  width: min(70ch, 92%);
+  width: min(85ch, 95%);
   display: grid;
   gap: 14px;
 }
 
 .intro__title {
-  font-size: clamp(28px, 3.2vw, 46px);
-  line-height: 1.05;
-  letter-spacing: -0.02em;
+  font-size: clamp(24px, 2.8vw, 38px);
+  line-height: 1.15;
+  letter-spacing: -0.01em;
   font-weight: 500;
 }
 
 .intro__text {
-  font-size: clamp(16px, 1.6vw, 19px);
-  line-height: 1.6;
+  font-size: clamp(15px, 1.5vw, 18px);
+  line-height: 1.7;
   opacity: 0.9;
   font-weight: 400;
   white-space: pre-line;
