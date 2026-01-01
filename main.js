@@ -298,12 +298,7 @@ const introPages = [
   },
   {
     title: "",
-    text:
-      "Este álbum es una recopilación.\n" +
-      "\nEn este catálogo aparecen todas las fotos que he recopilado los abuelos.\n" +
-      "La calidad de las imágenes ha sido trabajada y procesada para ser la más alta posible: cualquier rasguño, reflejo o desgaste es propio del original.\n" +
-      "La numeración no es cronológica y por tanto podría no estar ordenado según qué criterios.\n\n" +
-      "Pasa página, amplía las imágenes y descárgalas cuando quieras.",
+    text: "Este sitio funciona como un archivo digital de fotografías familiares, pensado como un catálogo donde se reúnen y conservan las fotos de los abuelos.\n Todas las imágenes han sido escaneadas con la mayor calidad posible, numeradas y acompañadas de descripciones cuando el original aporta información sobre personas, fechas o lugares.\n Además, se han añadido etiquetas que permiten buscar las fotografías por año o por palabras clave. \nLas imágenes han sido tratadas digitalmente para ofrecer el mejor estado visual posible. Cualquier rasguño, reflejo o imperfección forma parte del soporte original y, en muchos casos, no es corregible.\n La numeración de las fotografías no sigue un orden cronológico, ya que pueden estar organizadas por circunstancias u otros criterios ajenos a una línea temporal. \nEs posible encontrar imágenes duplicadas, ya que algunos originales cuentan con copias repetidas. Estas duplicaciones se irán revisando y eliminando progresivamente con el tiempo.\n Las descripciones y notas proceden bien de los textos escritos en el reverso de las fotografías originales, bien del proceso de documentación realizado para este archivo con la ayuda de Marina.\n Las relaciones familiares están descritas tomando como punto de partida la generación de Fernando, Marina, Jesús y Juan.\n La web funciona como un álbum: se navega pasando páginas, se pueden ampliar las imágenes, filtrarlas mediante búsqueda y descargarlas en cualquier momento, para que todas las fotografías estén siempre accesibles y puedan consultarse cuando se desee.\n\n Pasa página, amplía las imágenes y descárgalas cuando quieras.",
   },
 ];
 
