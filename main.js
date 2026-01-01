@@ -329,6 +329,7 @@ const modalPrev = document.getElementById("modalPrev");
 const modalNext = document.getElementById("modalNext");
 const modalDownload = document.getElementById("modalDownload");
 const fullscreenBtn = document.getElementById("fullscreenBtn");
+const fullscreenBtnMobile = document.getElementById("fullscreenBtnMobile");
 const firstBtn = document.getElementById("firstBtn");
 const lastBtn = document.getElementById("lastBtn");
 
@@ -775,6 +776,7 @@ function toggleFullscreen() {
 }
 
 fullscreenBtn.addEventListener("click", toggleFullscreen);
+fullscreenBtnMobile.addEventListener("click", toggleFullscreen);
 
 document.addEventListener("fullscreenchange", () => {
   const isFullscreen = !!document.fullscreenElement;
@@ -782,4 +784,5 @@ document.addEventListener("fullscreenchange", () => {
     ? "Salir de pantalla completa"
     : "Pantalla completa";
   fullscreenBtn.title = title;
+  fullscreenBtnMobile.title = title;
 });

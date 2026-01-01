@@ -18,55 +18,111 @@
   <body>
     <div class="app">
       <header class="topbar">
-        <h1>Archivo 01</h1>
+        <h1>Catálogo de fotos 01</h1>
 
-        <div class="search-row">
-          <input
-            type="text"
-            id="searchInput"
-            placeholder="Buscar por nº o palabras clave..."
-            aria-label="Buscar fotos"
-          />
+        <div class="controls">
+          <div class="search-wrapper">
+            <input
+              type="text"
+              id="searchInput"
+              placeholder="Buscar por nº o palabras clave..."
+              aria-label="Buscar fotos"
+            />
+            <button
+              id="clearSearch"
+              type="button"
+              class="clear-btn"
+              aria-label="Limpiar búsqueda"
+              title="Limpiar"
+            >
+              ✕
+            </button>
+          </div>
+
           <button
-            id="clearSearch"
+            id="fullscreenBtnMobile"
             type="button"
-            class="clear-btn"
-            aria-label="Limpiar búsqueda"
-            title="Limpiar"
+            class="fullscreen-btn-mobile"
+            aria-label="Pantalla completa"
+            title="Pantalla completa"
           >
-            ✕
+            ⛶
           </button>
-          <button 
-            id="fullscreenBtn" 
-            type="button"
-            aria-label="Pantalla completa" 
-            title="Pantalla completa">⛶</button>
+
+          <div class="nav-controls">
+            <button
+              id="firstBtn"
+              type="button"
+              aria-label="Ir al principio"
+              title="Ir al principio"
+            >
+              <img
+                src="img/beg.png"
+                alt=""
+                class="nav-icon"
+                onerror="this.style.display='none'; this.nextSibling.style.display='inline';"
+              />
+              <span class="nav-fallback">|◀</span>
+            </button>
+            <button
+              id="prevBtn"
+              type="button"
+              aria-label="Anterior"
+              title="Anterior"
+            >
+              <img
+                src="img/prev.png"
+                alt=""
+                class="nav-icon"
+                onerror="this.style.display='none'; this.nextSibling.style.display='inline';"
+              />
+              <span class="nav-fallback">◀</span>
+            </button>
+            <span id="pageIndicator">Página 1 / 1</span>
+            <button
+              id="nextBtn"
+              type="button"
+              aria-label="Siguiente"
+              title="Siguiente"
+            >
+              <img
+                src="img/next.png"
+                alt=""
+                class="nav-icon"
+                onerror="this.style.display='none'; this.nextSibling.style.display='inline';"
+              />
+              <span class="nav-fallback">▶</span>
+            </button>
+            <button
+              id="lastBtn"
+              type="button"
+              aria-label="Ir al final"
+              title="Ir al final"
+            >
+              <img
+                src="img/end.png"
+                alt=""
+                class="nav-icon"
+                onerror="this.style.display='none'; this.nextSibling.style.display='inline';"
+              />
+              <span class="nav-fallback">▶|</span>
+            </button>
+            <button
+              id="fullscreenBtn"
+              type="button"
+              class="fullscreen-btn-desktop"
+              aria-label="Pantalla completa"
+              title="Pantalla completa"
+            >
+              ⛶
+            </button>
+          </div>
         </div>
       </header>
 
       <main class="page">
         <section class="grid" id="grid" aria-label="Mosaico de fotos"></section>
       </main>
-
-      <footer class="nav-footer">
-        <button id="firstBtn" type="button" aria-label="Ir al principio" title="Ir al principio">
-          <img src="img/beg.png" alt="" class="nav-icon" onerror="this.style.display='none'; this.nextSibling.style.display='inline';">
-          <span class="nav-fallback">|◀</span>
-        </button>
-        <button id="prevBtn" type="button" aria-label="Anterior" title="Anterior">
-          <img src="img/prev.png" alt="" class="nav-icon" onerror="this.style.display='none'; this.nextSibling.style.display='inline';">
-          <span class="nav-fallback">◀</span>
-        </button>
-        <span id="pageIndicator">Página 1 / 1</span>
-        <button id="nextBtn" type="button" aria-label="Siguiente" title="Siguiente">
-          <img src="img/next.png" alt="" class="nav-icon" onerror="this.style.display='none'; this.nextSibling.style.display='inline';">
-          <span class="nav-fallback">▶</span>
-        </button>
-        <button id="lastBtn" type="button" aria-label="Ir al final" title="Ir al final">
-          <img src="img/end.png" alt="" class="nav-icon" onerror="this.style.display='none'; this.nextSibling.style.display='inline';">
-          <span class="nav-fallback">▶|</span>
-        </button>
-      </footer>
     </div>
 
     <!-- MODAL -->
@@ -75,7 +131,6 @@
 
       <div class="modal__content" role="dialog" aria-modal="true">
         <div class="modal__meta">
-          <!-- Columna izquierda: número + texto secundario -->
           <div class="modal__leftInfo">
             <div class="modal__number" id="modalNumber">Nº 1</div>
             <div class="modal__secondaryText" id="modalSecondary">
@@ -83,66 +138,6 @@
             </div>
           </div>
 
-          <!-- Columna derecha: botones de acción -->
-          <div class="modal__actions">
-            <button
-              class="modal__iconBtn"
-              id="modalDownload"
-              type="button"
-              aria-label="Descargar"
-              title="Descargar"
-            >
-              ⤓
-            </button>
-
-            <button
-              class="modal__iconBtn"
-              type="button"
-              data-close="true"
-              aria-label="Cerrar"
-              title="Cerrar"
-            >
-              ✕
-            </button>
-          </div>
-        </div>
-
-        <div class="modal__imageWrap">
-          <img id="modalImg" src="" alt="Foto ampliada" />
-        </div>
-
-        <div class="modal__caption" id="modalCaption"></div>
-
-        <div class="modal__nav">
-          <button id="modalPrev" type="button" aria-label="Foto anterior">
-            ←
-          </button>
-          <button id="modalNext" type="button" aria-label="Foto siguiente">
-            →
-          </button>
-        </div>
-      </div>
-    </div>
-
-    <script src="main.js"></script>
-  </body>
-</html>
-
-    <!-- MODAL -->
-    <div class="modal" id="modal" aria-hidden="true">
-      <div class="modal__backdrop" data-close="true"></div>
-
-      <div class="modal__content" role="dialog" aria-modal="true">
-        <div class="modal__meta">
-          <!-- Columna izquierda: número + texto secundario -->
-          <div class="modal__leftInfo">
-            <div class="modal__number" id="modalNumber">Nº 1</div>
-            <div class="modal__secondaryText" id="modalSecondary">
-              texto nuevo
-            </div>
-          </div>
-
-          <!-- Columna derecha: botones de acción -->
           <div class="modal__actions">
             <button
               class="modal__iconBtn"
