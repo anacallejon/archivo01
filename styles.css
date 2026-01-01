@@ -505,8 +505,8 @@ body {
   .topbar {
     flex-direction: column;
     align-items: center;
-    gap: 14px;
-    padding: 14px var(--page-padding);
+    gap: 12px;
+    padding: 14px var(--page-padding) 0;
     flex: 0 0 auto;
   }
 
@@ -518,19 +518,20 @@ body {
 
   .controls {
     width: 100%;
-    flex-direction: row;
+    flex-direction: column;
     align-items: stretch;
-    justify-content: center;
-    gap: 10px;
+    gap: 12px;
+    padding-bottom: 14px;
   }
 
   .search-wrapper {
-    flex: 1;
-    max-width: none;
+    width: 100%;
+    display: flex;
+    gap: 10px;
   }
 
   #searchInput {
-    width: 100%;
+    flex: 1;
     min-width: 0;
     font-size: 13px;
     padding: 10px 36px 10px 16px;
@@ -551,8 +552,6 @@ body {
     justify-content: center;
     gap: 12px;
     width: 100%;
-    order: 10;
-    flex-basis: 100%;
   }
 
   .controls button {
