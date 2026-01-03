@@ -195,6 +195,11 @@ const photos = [
     secondary: "Fernando, abuelo, papá, retrato",
   },
   {
+    src: "img/39.jpeg",
+    caption: "Fernando\nMayo 1964",
+    secondary: "Fernando, abuelo, papá, retrato",
+  },
+  {
     src: "img/40.jpeg",
     caption: "Fernando, Zamora\n3 Mayo 1964",
     secondary: "Fernando, abuelo, papá, moto",
