@@ -207,12 +207,12 @@ const photos = [
   {
     src: "img/41.jpeg",
     caption: "Fernando\nMayo 1964",
-    secondary: "Fernando, abuelo, papá, retrato",
+    secondary: "Fernando, hijo, hermano, jr, bebé",
   },
   {
     src: "img/42.jpeg",
-    caption: "Fernando hijo\n24/4/1964",
-    secondary: "Fernando, hermano, jr, bebé",
+    caption: "DUPLICADA 301\n24/4/1964",
+    secondary: "junio 1956",
   },
   {
     src: "img/300.jpeg",
