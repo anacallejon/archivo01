@@ -215,6 +215,21 @@ const photos = [
     secondary: "junio 1956",
   },
   {
+    src: "img/48.jpeg",
+    caption: "Marina y amigas, Piedralaves\n5/6/1958",
+    secondary: "Marina, abuela, mamá, amigas, Piedralaves",
+  },
+  {
+    src: "img/58.jpeg",
+    caption: "Fernando\n20/8/1964",
+    secondary: "Fernando, hijo, hermano, bebé, jr",
+  },
+  {
+    src: "img/59.jpeg",
+    caption: "Fernando\n10/8/1964",
+    secondary: "Fernando, papá, abuelo, bañador",
+  },
+  {
     src: "img/300.jpeg",
     caption: "DUPLICADA\nJunio 1956",
     secondary: "Fernando, abuelo, papá, campo, caza",
