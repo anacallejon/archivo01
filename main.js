@@ -1,5 +1,5 @@
 // ====== DATOS ======
-// Array con todas las fotos (550 en total)
+// Array con todas las fotos (950 en total)
 const photos = [
   {
     src: "img/1.jpeg",
@@ -13,8 +13,8 @@ const photos = [
   },
 ];
 
-// Genera automáticamente el resto de fotos hasta llegar a 550
-for (let i = photos.length + 1; i <= 550; i++) {
+// Genera automáticamente el resto de fotos hasta llegar a 950
+for (let i = photos.length + 1; i <= 950; i++) {
   photos.push({
     src: `img/${i}.jpeg`,
     caption: `Foto ${i}\nDescripción`,
