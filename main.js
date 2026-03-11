@@ -4756,7 +4756,7 @@ const photos = [
   },
 ];
 
-// Páginas especiales (las 2 primeras)
+// Páginas especiales (las 3 primeras)
 const introPages = [
   {
     title: "Catálogo de fotos 01",
@@ -4766,6 +4766,12 @@ const introPages = [
     title:
       "Este sitio funciona como un archivo digital de fotografías familiares, pensado como un catálogo donde se reúnen y conservan las fotos de los abuelos.",
     text: "Todas las imágenes han sido escaneadas con la mayor calidad posible, numeradas y acompañadas de descripciones cuando el original aporta información sobre personas, fechas o lugares. Además, se han añadido etiquetas que permiten buscar las fotografías por año o por palabras clave.\n\nLas imágenes han sido tratadas digitalmente para ofrecer el mejor estado visual posible. Cualquier rasguño, reflejo o imperfección forma parte del original y no siempre es corregible. La numeración no sigue un orden cronológico, ya que las fotografías pueden estar organizadas por circunstancias u otros criterios ajenos a una línea temporal.\n\nPueden existir imágenes duplicadas, debido a la presencia de copias originales. Estas se irán revisando y eliminando progresivamente con el tiempo. Las descripciones y notas proceden del reverso de las fotografías originales o del proceso de documentación realizado con la ayuda de Marina. Las relaciones familiares se describen tomando como referencia la generación de Fernando, Marina, Jesús y Juan.\n\nLa web funciona como un álbum: pasa página, amplía las imágenes, filtra la búsqueda y descárgalas cuando quieras.",
+  },
+  {
+    type: "image",
+    title: "Árbol Genealógico",
+    text: "Aquí el árbol genealógico Callejón. Para ver más, arrastra la imagen.",
+    src: "img/ArbolG3.jpg",
   },
 ];
 
@@ -4994,7 +5000,7 @@ function renderIntroPage(pageIndex) {
   const p = introPages[pageIndex];
 
   const wrap = document.createElement("div");
-  wrap.className = "intro";
+  wrap.className = p.type === "image" ? "intro intro--image" : "intro";
 
   if (p.title) {
     const h = document.createElement("h2");
@@ -5003,10 +5009,54 @@ function renderIntroPage(pageIndex) {
     wrap.appendChild(h);
   }
 
-  const t = document.createElement("div");
-  t.className = "intro__text";
-  t.textContent = p.text;
-  wrap.appendChild(t);
+  if (p.text) {
+    const t = document.createElement("div");
+    t.className = "intro__text";
+    t.textContent = p.text;
+    wrap.appendChild(t);
+  }
+
+  if (p.type === "image" && p.src) {
+    const frame = document.createElement("div");
+    frame.className = "intro__imgFrame";
+
+    const img = document.createElement("img");
+    img.src = p.src;
+    img.alt = p.title || "";
+    img.className = "intro__imgScroll";
+    img.draggable = false;
+
+    // Arrastrar para hacer scroll
+    let isDragging = false;
+    let startX, scrollLeft;
+
+    frame.addEventListener("mousedown", (e) => {
+      isDragging = true;
+      frame.style.cursor = "grabbing";
+      startX = e.pageX - frame.offsetLeft;
+      scrollLeft = frame.scrollLeft;
+    });
+
+    frame.addEventListener("mouseleave", () => {
+      isDragging = false;
+      frame.style.cursor = "grab";
+    });
+
+    frame.addEventListener("mouseup", () => {
+      isDragging = false;
+      frame.style.cursor = "grab";
+    });
+
+    frame.addEventListener("mousemove", (e) => {
+      if (!isDragging) return;
+      e.preventDefault();
+      const x = e.pageX - frame.offsetLeft;
+      frame.scrollLeft = scrollLeft - (x - startX);
+    });
+
+    frame.appendChild(img);
+    wrap.appendChild(frame);
+  }
 
   grid.appendChild(wrap);
 }
@@ -5057,9 +5107,7 @@ function renderPage() {
     renderPhotoPage(currentPage);
     const resultsText =
       filteredPhotos.length === 1 ? "resultado" : "resultados";
-    pageIndicator.textContent = `${
-      filteredPhotos.length
-    } ${resultsText} - Página ${currentPage + 1} / ${tp}`;
+    pageIndicator.textContent = `${filteredPhotos.length} ${resultsText} - Página ${currentPage + 1} / ${tp}`;
   } else {
     const isIntro = currentPage < introPages.length;
 
@@ -5070,13 +5118,83 @@ function renderPage() {
       renderPhotoPage(photoPageIndex);
     }
 
-    pageIndicator.textContent = `Página ${currentPage + 1} / ${tp}`;
+    updatePageIndicator(currentPage + 1, tp);
   }
 
   prevBtn.disabled = currentPage === 0;
   nextBtn.disabled = currentPage >= tp - 1;
   firstBtn.disabled = currentPage === 0;
   lastBtn.disabled = currentPage >= tp - 1;
+}
+
+// ====== INDICADOR DE PÁGINA EDITABLE ======
+let pageInputActive = false;
+
+function updatePageIndicator(current, total) {
+  // Si el input ya existe, solo actualizamos el valor — no recreamos el DOM
+  const existingInput = pageIndicator.querySelector(".page-input");
+  const existingTotal = pageIndicator.querySelector(".page-total");
+
+  if (existingInput && existingTotal) {
+    if (document.activeElement !== existingInput) {
+      existingInput.value = String(current);
+    }
+    existingTotal.textContent = `\u00A0/\u00A0${total}`;
+    return;
+  }
+
+  // Primera vez: construir la estructura
+  pageIndicator.innerHTML = "";
+
+  const labelBefore = document.createTextNode("Página\u00A0");
+  pageIndicator.appendChild(labelBefore);
+
+  const input = document.createElement("input");
+  input.type = "text";
+  input.value = String(current);
+  input.className = "page-input";
+  input.setAttribute("aria-label", "Ir a página");
+  input.setAttribute("tabindex", "-1");
+  input.size = String(total).length + 1;
+  pageIndicator.appendChild(input);
+
+  const labelAfter = document.createElement("span");
+  labelAfter.className = "page-total";
+  labelAfter.textContent = `\u00A0/\u00A0${total}`;
+  pageIndicator.appendChild(labelAfter);
+
+  function commitPageInput() {
+    if (pageInputActive) return;
+    pageInputActive = true;
+    const val = parseInt(input.value, 10);
+    const tp = totalPages();
+    if (!isNaN(val) && val >= 1 && val <= tp) {
+      currentPage = val - 1;
+      renderPage();
+      trackStateChange();
+    } else {
+      input.value = String(currentPage + 1);
+    }
+    pageInputActive = false;
+  }
+
+  input.addEventListener("keydown", (e) => {
+    if (e.key === "Enter") {
+      e.preventDefault();
+      input.blur();
+    }
+    if (e.key === "Escape") {
+      input.value = String(currentPage + 1);
+      input.blur();
+    }
+    e.stopPropagation();
+  });
+
+  input.addEventListener("blur", commitPageInput);
+  input.addEventListener("click", () => {
+    input.setAttribute("tabindex", "0");
+    input.select();
+  });
 }
 
 prevBtn.addEventListener("click", () => {
